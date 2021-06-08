@@ -1,8 +1,14 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
+let mode = "development";
+
+if (process.env.NODE_ENV === "production") {
+    mode = "production";
+}
+
 module.exports = {
-    mode: "development",
+    mode: mode,
 
     entry: './app/js/script.js',
     output: {
@@ -12,6 +18,13 @@ module.exports = {
     
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                },
+            },
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
                 type: "asset/resource",
@@ -33,9 +46,9 @@ module.exports = {
     plugins: [new MiniCssExtractPlugin()],
 
     devtool: "source-map",
-    // devServer: {
-    //     contentBase: "./dist",
-    //     hot: true,
-    // }
+    devServer: {
+        // contentBase: "./app",
+        hot: true,
+    }
 
 };

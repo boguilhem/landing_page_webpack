@@ -62,34 +62,31 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/style.scss */ "./app/scss/style.scss");
 
-
-const btnHamburger = document.querySelector('#btnHamburger');
-const body = document.querySelector('body');
-const header = document.querySelector('.header');
-const overlay = document.querySelector('.overlay');
-const fadeElems = document.querySelectorAll('.has-fade');
-
-btnHamburger.addEventListener('click', function(){
+var btnHamburger = document.querySelector('#btnHamburger');
+var body = document.querySelector('body');
+var header = document.querySelector('.header');
+var overlay = document.querySelector('.overlay');
+var fadeElems = document.querySelectorAll('.has-fade');
+btnHamburger.addEventListener('click', function () {
   console.log('click hamburger');
 
-  if(header.classList.contains('open')){ // Close Hamburger Menu
+  if (header.classList.contains('open')) {
+    // Close Hamburger Menu
     body.classList.remove('noscroll');
-    header.classList.remove('open');    
-    fadeElems.forEach(function(element){
+    header.classList.remove('open');
+    fadeElems.forEach(function (element) {
       element.classList.remove('fade-in');
       element.classList.add('fade-out');
     });
-    
-  }
-  else { // Open Hamburger Menu
+  } else {
+    // Open Hamburger Menu
     body.classList.add('noscroll');
     header.classList.add('open');
-    fadeElems.forEach(function(element){
+    fadeElems.forEach(function (element) {
       element.classList.remove('fade-out');
       element.classList.add('fade-in');
     });
-
-  }  
+  }
 });
 })();
 
